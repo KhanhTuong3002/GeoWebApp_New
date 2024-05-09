@@ -11,9 +11,8 @@ namespace BusinessObject.Entites
     public class Question : BaseEntity
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        public int AuthorId { get; set; }
+        public string Id { get; set; }
+        public string AuthorId { get; set; }
         public string Image { get; set; }
         public required string Content { get; set; } = default!;
         public DateTimeOffset? Published { get; set; }

@@ -13,8 +13,8 @@ namespace BusinessObject.Entites
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
-        public int Id {  get; set; }
-        [ForeignKey(nameof(Question))] public int QuestionId { get; set; }
+        public string Id {  get; set; }
+        [ForeignKey(nameof(Question))] public string QuestionId { get; set; }
         public string Answers { get; set; }
         public string? Description { get; set; }
         public bool? IsCorrect { get; set; }

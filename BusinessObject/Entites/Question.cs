@@ -13,7 +13,9 @@ namespace BusinessObject.Entites
         [Column("question_id")]
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [MaxLength(450)]
         public string Id { get; set; }
+        [MaxLength(450)]
         public string AuthorId { get; set; }
         public string Image { get; set; }
         public required string Content { get; set; } = default!;

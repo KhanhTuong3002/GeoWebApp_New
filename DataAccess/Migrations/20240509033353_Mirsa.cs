@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class Migs : Migration
+    public partial class Mirsa : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -54,8 +54,8 @@ namespace DataAccess.Migrations
                 name: "Questions",
                 columns: table => new
                 {
-                    question_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    AuthorId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    question_id = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
+                    AuthorId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Published = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,12 @@ namespace BusinessObject.Entites
 {
     public class Tracking : BaseEntity
     {
-        [ForeignKey(nameof(Question))] public string QuestionId { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        [ForeignKey(nameof(Question))] public int QuestionId { get; set; }
         public virtual Question Question { get; set; } = default!;
-        public string AuthorId { get; set; }
+        public int AuthorId { get; set; }
         public string UpdContent { get; set; }
         public string UpdAnswers { get; set; }
         public string UpdDescription { get; set; }

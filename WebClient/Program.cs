@@ -1,6 +1,7 @@
 using DataAccess;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using WebClient.Areas.Identity.Pages.Account;
 using WebClient.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -40,5 +41,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
-
+//this is test code for send mail .....
+Console.WriteLine("Sending test email");
+//await RegisterModel.SendEmailAsync("Tuongvkce161108@fpt.edu.vn", "test", "test");
 app.Run();

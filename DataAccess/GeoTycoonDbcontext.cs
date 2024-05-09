@@ -14,6 +14,7 @@ namespace DataAccess
 
         public GeoTycoonDbcontext(DbContextOptions<GeoTycoonDbcontext> options) : base(options) { }
 
+
         public virtual DbSet<Question> Questions { get; init; } = default!;
         public virtual DbSet<Answer> Answers { get; init; } = default!;
         public virtual DbSet<Tracking> Trackings { get; init; } = default!;

@@ -25,8 +25,9 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("BusinessObject.Entites.Answer", b =>
                 {
                     b.Property<string>("Id")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnName("answer_id");
 
                     b.Property<string>("Answers")
                         .IsRequired()
@@ -48,7 +49,7 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("QuestionId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -60,8 +61,9 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("BusinessObject.Entites.Question", b =>
                 {
                     b.Property<string>("Id")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnName("question_id");
 
                     b.Property<string>("AuthorId")
                         .IsRequired()
@@ -79,9 +81,6 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset?>("LastUpadate")
-                        .HasColumnType("datetimeoffset");
-
                     b.Property<DateTimeOffset?>("LastUpdated")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetimeoffset");
@@ -97,12 +96,12 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("BusinessObject.Entites.Tracking", b =>
                 {
                     b.Property<string>("Id")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnName("tracking_id");
 
-                    b.Property<string>("AuthorId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("AuthorId")
+                        .HasColumnType("int");
 
                     b.Property<DateTimeOffset>("CreatedAt")
                         .ValueGeneratedOnAdd()
@@ -114,7 +113,7 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("QuestionId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -131,9 +130,6 @@ namespace DataAccess.Migrations
                     b.Property<string>("UpdDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("lastUpdate")
-                        .HasColumnType("datetimeoffset");
 
                     b.HasKey("Id");
 

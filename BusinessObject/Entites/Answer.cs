@@ -10,6 +10,7 @@ namespace BusinessObject.Entites
 {
     public class Answer : BaseEntity
     {
+        [Column("answer_id")]
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
@@ -18,7 +19,6 @@ namespace BusinessObject.Entites
         public string Answers { get; set; }
         public string? Description { get; set; }
         public bool? IsCorrect { get; set; }
-
         public virtual Question Question { get; set; } = default!;
 
     }

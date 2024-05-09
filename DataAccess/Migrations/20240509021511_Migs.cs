@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class Migrs : Migration
+    public partial class Migs : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -54,18 +54,17 @@ namespace DataAccess.Migrations
                 name: "Questions",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    question_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     AuthorId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Published = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LastUpadate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     LastUpdated = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Questions", x => x.Id);
+                    table.PrimaryKey("PK_Questions", x => x.question_id);
                 });
 
             migrationBuilder.CreateTable(
@@ -178,8 +177,8 @@ namespace DataAccess.Migrations
                 name: "Answers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    QuestionId = table.Column<string>(type: "nvarchar(20)", nullable: false),
+                    answer_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    QuestionId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Answers = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsCorrect = table.Column<bool>(type: "bit", nullable: true),
@@ -188,12 +187,12 @@ namespace DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Answers", x => x.Id);
+                    table.PrimaryKey("PK_Answers", x => x.answer_id);
                     table.ForeignKey(
                         name: "FK_Answers_Questions_QuestionId",
                         column: x => x.QuestionId,
                         principalTable: "Questions",
-                        principalColumn: "Id",
+                        principalColumn: "question_id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -201,25 +200,24 @@ namespace DataAccess.Migrations
                 name: "Trackings",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    QuestionId = table.Column<string>(type: "nvarchar(20)", nullable: false),
-                    AuthorId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    tracking_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    QuestionId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    AuthorId = table.Column<int>(type: "int", nullable: false),
                     UpdContent = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UpdAnswers = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UpdDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    lastUpdate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastUpdated = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Trackings", x => x.Id);
+                    table.PrimaryKey("PK_Trackings", x => x.tracking_id);
                     table.ForeignKey(
                         name: "FK_Trackings_Questions_QuestionId",
                         column: x => x.QuestionId,
                         principalTable: "Questions",
-                        principalColumn: "Id",
+                        principalColumn: "question_id",
                         onDelete: ReferentialAction.Cascade);
                 });
 

@@ -28,7 +28,7 @@ namespace BusinessObject.Entites
     public abstract class BaseEntity : BaseEntity<string>, IEntity
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [StringLength(450)]
+        [StringLength(20)]
         [Key]
         public override string Id { get; set; } = SnowflakeGenerator.Generate();
     }

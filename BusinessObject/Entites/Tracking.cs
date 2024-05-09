@@ -10,6 +10,7 @@ namespace BusinessObject.Entites
 {
     public class Tracking : BaseEntity
     {
+        [Column("tracking_id")]
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
@@ -19,8 +20,6 @@ namespace BusinessObject.Entites
         public string UpdContent { get; set; }
         public string UpdAnswers { get; set; }
         public string UpdDescription { get; set; }
-
-        public DateTimeOffset lastUpdate { get; set; } = DateTimeOffset.Now;
         public String Status { get; set; }
     }
 }

@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
@@ -78,6 +80,18 @@ namespace WebClient.Areas.Identity.Pages.Account
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
+
+            [Required]
+            [Display(Name = "Full Name")]
+            public string FullName { get; set; }
+
+            [Required]
+            [Display(Name = "Date of Birth")]
+            public string DOB { get; set; }
+
+            [Required]
+            [Display(Name = "Role")]
+            public string Role { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -153,7 +167,41 @@ namespace WebClient.Areas.Identity.Pages.Account
             // If we got this far, something failed, redisplay form
             return Page();
         }
+        public static async Task<bool> SendEmailAsync(string email, string subject, string confirmLink)
+        {
+            try
+            {
+                MailMessage message = new MailMessage();
+                SmtpClient smtpClient = new SmtpClient();
+                // message.From = new MailAddress("AIAIYan@yandex.com");
+                // message.From = new MailAddress("Votuongpro@yandex.com");
+                message.From = new MailAddress("khanhtuongadminsp24@geotycoonclient.se");
+                message.To.Add(email);
+                message.Subject = subject;
+                message.IsBodyHtml = true;
+                message.Body = confirmLink;
 
+                smtpClient.Port = 587;
+                //smtpClient.Host = "smtp.yandex.com";
+                smtpClient.Host = "smtp.simply.com";
+
+                smtpClient.EnableSsl = true;
+                smtpClient.UseDefaultCredentials = false;
+                //smtpClient.Credentials = new NetworkCredential("Votuongpro", "treuaefycjlhuceg");
+                // smtpClient.Credentials = new NetworkCredential("AIAIYan","btmfzuuiinntzcou");
+                smtpClient.Credentials = new NetworkCredential("khanhtuongadminsp24@geotycoonclient.se", "Kojlakothe29");
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.Send(message);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+
+            }
+
+        }
         private IdentityUser CreateUser()
         {
             try

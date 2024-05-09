@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,10 +14,10 @@ namespace BusinessObject.Entites
         [Column("question_id")]
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [MaxLength(450)]
         public string Id { get; set; }
         [MaxLength(450)]
-        public string AuthorId { get; set; }
+        [ForeignKey(nameof(IdentityUser))] public string AuthorId { get; set; }
+        public virtual IdentityUser User { get; set; } = default!;
         public string Image { get; set; }
         public required string Content { get; set; } = default!;
         public DateTimeOffset? Published { get; set; }

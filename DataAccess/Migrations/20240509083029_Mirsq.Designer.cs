@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(GeoTycoonDbcontext))]
-    [Migration("20240509033353_Mirsa")]
-    partial class Mirsa
+    [Migration("20240509083029_Mirsq")]
+    partial class Mirsq
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,7 +65,6 @@ namespace DataAccess.Migrations
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(450)
                         .HasColumnType("nvarchar(450)")
                         .HasColumnName("question_id");
 
@@ -93,7 +92,12 @@ namespace DataAccess.Migrations
                     b.Property<DateTimeOffset?>("Published")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Questions");
                 });
@@ -169,6 +173,23 @@ namespace DataAccess.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "4239f82f-491d-4007-9b95-f8ff68f2f0e6",
+                            Name = "Administrator"
+                        },
+                        new
+                        {
+                            Id = "214b31bb-e1bd-4d67-97ec-5d5cca0cc291",
+                            Name = "Teacher"
+                        },
+                        new
+                        {
+                            Id = "0d3e532f-0059-45e2-9ca5-1a42ef43030f",
+                            Name = "Pending"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -351,6 +372,15 @@ namespace DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Question");
+                });
+
+            modelBuilder.Entity("BusinessObject.Entites.Question", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("BusinessObject.Entites.Tracking", b =>

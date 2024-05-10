@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class Mirsq : Migration
+    public partial class Misturi : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,6 +32,7 @@ namespace DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -53,6 +54,19 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Province",
+                columns: table => new
+                {
+                    province_id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    provinceName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Province", x => x.province_id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RoleClaims",
                 columns: table => new
                 {
@@ -71,29 +85,6 @@ namespace DataAccess.Migrations
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Questions",
-                columns: table => new
-                {
-                    question_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    AuthorId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Published = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LastUpdated = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Questions", x => x.question_id);
-                    table.ForeignKey(
-                        name: "FK_Questions_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -182,6 +173,66 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Questions",
+                columns: table => new
+                {
+                    question_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProvinceId = table.Column<int>(type: "int", nullable: false),
+                    AuthorId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Published = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LastUpdated = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Questions", x => x.question_id);
+                    table.ForeignKey(
+                        name: "FK_Questions_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Questions_Province_ProvinceId",
+                        column: x => x.ProvinceId,
+                        principalTable: "Province",
+                        principalColumn: "province_id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserQuestions",
+                columns: table => new
+                {
+                    Uquestion_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProvinceId = table.Column<int>(type: "int", nullable: false),
+                    AuthorId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Published = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LastUpdated = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserQuestions", x => x.Uquestion_id);
+                    table.ForeignKey(
+                        name: "FK_UserQuestions_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_UserQuestions_Province_ProvinceId",
+                        column: x => x.ProvinceId,
+                        principalTable: "Province",
+                        principalColumn: "province_id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Answers",
                 columns: table => new
                 {
@@ -209,7 +260,7 @@ namespace DataAccess.Migrations
                 columns: table => new
                 {
                     tracking_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    QuestionId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UquestionId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     AuthorId = table.Column<int>(type: "int", nullable: false),
                     UpdContent = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UpdAnswers = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -222,10 +273,33 @@ namespace DataAccess.Migrations
                 {
                     table.PrimaryKey("PK_Trackings", x => x.tracking_id);
                     table.ForeignKey(
-                        name: "FK_Trackings_Questions_QuestionId",
-                        column: x => x.QuestionId,
-                        principalTable: "Questions",
-                        principalColumn: "question_id",
+                        name: "FK_Trackings_UserQuestions_UquestionId",
+                        column: x => x.UquestionId,
+                        principalTable: "UserQuestions",
+                        principalColumn: "Uquestion_id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserAnswers",
+                columns: table => new
+                {
+                    Uanswer_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UquestionId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Uanswers = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsCorrect = table.Column<bool>(type: "bit", nullable: true),
+                    LastUpdated = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserAnswers", x => x.Uanswer_id);
+                    table.ForeignKey(
+                        name: "FK_UserAnswers_UserQuestions_UquestionId",
+                        column: x => x.UquestionId,
+                        principalTable: "UserQuestions",
+                        principalColumn: "Uquestion_id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -234,9 +308,76 @@ namespace DataAccess.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "0d3e532f-0059-45e2-9ca5-1a42ef43030f", null, "Pending", null },
-                    { "214b31bb-e1bd-4d67-97ec-5d5cca0cc291", null, "Teacher", null },
-                    { "4239f82f-491d-4007-9b95-f8ff68f2f0e6", null, "Administrator", null }
+                    { "1366a747-f9aa-415f-a80f-d2c4fbdec672", null, "Administrator", null },
+                    { "b9f1df55-f811-4ef9-accb-9a092cddd1eb", null, "Teacher", null },
+                    { "dac3ed10-893a-426a-a07f-74f7ff8237e9", null, "Pending", null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Province",
+                columns: new[] { "province_id", "provinceName" },
+                values: new object[,]
+                {
+                    { 2, "An Giang" },
+                    { 3, "Bà Rịa - Vũng Tàu" },
+                    { 4, "Bắc Giang" },
+                    { 5, "Bắc Kạn" },
+                    { 6, "Bạc Liêu" },
+                    { 7, "Bắc Ninh" },
+                    { 8, "Bến Tre" },
+                    { 9, "Bình Định" },
+                    { 10, "Bình Dương" },
+                    { 11, "Bình Phước" },
+                    { 12, "Bình Thuận" },
+                    { 13, "Cà Mau" },
+                    { 14, "Cao Bằng" },
+                    { 15, "Đắk Lắk" },
+                    { 16, "Đắk Nông" },
+                    { 17, "Điện Biên" },
+                    { 18, "Đồng Nai" },
+                    { 19, "Đồng Tháp" },
+                    { 20, "Gia Lai" },
+                    { 21, "Hà Giang" },
+                    { 22, "Hà Nam" },
+                    { 23, "Hà Nội" },
+                    { 24, "Hà Tĩnh" },
+                    { 25, "Hải Dương" },
+                    { 26, "Hải Phòng" },
+                    { 27, "Hậu Giang" },
+                    { 28, "Hòa Bình" },
+                    { 29, "Hưng Yên" },
+                    { 30, "Khánh Hòa" },
+                    { 31, "Kiên Giang" },
+                    { 32, "Kon Tum" },
+                    { 33, "Lai Châu" },
+                    { 34, "Lâm Đồng" },
+                    { 35, "Lạng Sơn" },
+                    { 36, "Lào Cai" },
+                    { 37, "Long An" },
+                    { 38, "Nam Định" },
+                    { 39, "Nghệ An" },
+                    { 40, "Ninh Bình" },
+                    { 41, "Ninh Thuận" },
+                    { 42, "Phú Thọ" },
+                    { 43, "Phú Yên" },
+                    { 44, "Quảng Bình" },
+                    { 45, "Quảng Nam" },
+                    { 46, "Quảng Ngãi" },
+                    { 47, "Quảng Ninh" },
+                    { 48, "Quảng Trị" },
+                    { 49, "Sóc Trăng" },
+                    { 50, "Sơn La" },
+                    { 51, "Tây Ninh" },
+                    { 52, "Thái Bình" },
+                    { 53, "Thái Nguyên" },
+                    { 54, "Thanh Hóa" },
+                    { 55, "Thừa Thiên Huế" },
+                    { 56, "Tiền Giang" },
+                    { 57, "Trà Vinh" },
+                    { 58, "Tuyên Quang" },
+                    { 59, "Vĩnh Long" },
+                    { 60, "Vĩnh Phúc" },
+                    { 61, "Yên Bái" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -264,6 +405,11 @@ namespace DataAccess.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Questions_ProvinceId",
+                table: "Questions",
+                column: "ProvinceId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Questions_UserId",
                 table: "Questions",
                 column: "UserId");
@@ -274,10 +420,14 @@ namespace DataAccess.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Trackings_QuestionId",
+                name: "IX_Trackings_UquestionId",
                 table: "Trackings",
-                column: "QuestionId",
-                unique: true);
+                column: "UquestionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserAnswers_UquestionId",
+                table: "UserAnswers",
+                column: "UquestionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserClaims_UserId",
@@ -287,6 +437,16 @@ namespace DataAccess.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_UserLogins_UserId",
                 table: "UserLogins",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserQuestions_ProvinceId",
+                table: "UserQuestions",
+                column: "ProvinceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserQuestions_UserId",
+                table: "UserQuestions",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -308,6 +468,9 @@ namespace DataAccess.Migrations
                 name: "Trackings");
 
             migrationBuilder.DropTable(
+                name: "UserAnswers");
+
+            migrationBuilder.DropTable(
                 name: "UserClaims");
 
             migrationBuilder.DropTable(
@@ -323,10 +486,16 @@ namespace DataAccess.Migrations
                 name: "Questions");
 
             migrationBuilder.DropTable(
+                name: "UserQuestions");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Province");
         }
     }
 }

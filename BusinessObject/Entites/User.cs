@@ -16,6 +16,8 @@ namespace BusinessObject.Entites
         [Key]
         public override string Id { get; set; }
 
+        public bool IsApproved { get; set; }
+
         public User()
         {
             Id = SnowflakeGenerator.Generate(10);

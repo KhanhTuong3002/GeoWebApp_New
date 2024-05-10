@@ -33,6 +33,7 @@ namespace DataAccess.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
+                    IsApproved = table.Column<bool>(type: "bit", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -308,9 +309,9 @@ namespace DataAccess.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "1366a747-f9aa-415f-a80f-d2c4fbdec672", null, "Administrator", null },
-                    { "b9f1df55-f811-4ef9-accb-9a092cddd1eb", null, "Teacher", null },
-                    { "dac3ed10-893a-426a-a07f-74f7ff8237e9", null, "Pending", null }
+                    { "3bfe6362-1249-4578-b809-e6559cbb6b6b", null, "Teacher", null },
+                    { "af75ffff-fcc5-431b-bf09-c3fea4efa770", null, "Pending", null },
+                    { "ef947707-772d-45f3-b7a3-d4080fbdae6a", null, "Administrator", null }
                 });
 
             migrationBuilder.InsertData(

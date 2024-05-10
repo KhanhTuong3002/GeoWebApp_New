@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(GeoTycoonDbcontext))]
-    [Migration("20240510040537_Misturi")]
+    [Migration("20240510113053_Misturi")]
     partial class Misturi
     {
         /// <inheritdoc />
@@ -584,17 +584,17 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1366a747-f9aa-415f-a80f-d2c4fbdec672",
+                            Id = "ef947707-772d-45f3-b7a3-d4080fbdae6a",
                             Name = "Administrator"
                         },
                         new
                         {
-                            Id = "b9f1df55-f811-4ef9-accb-9a092cddd1eb",
+                            Id = "3bfe6362-1249-4578-b809-e6559cbb6b6b",
                             Name = "Teacher"
                         },
                         new
                         {
-                            Id = "dac3ed10-893a-426a-a07f-74f7ff8237e9",
+                            Id = "af75ffff-fcc5-431b-bf09-c3fea4efa770",
                             Name = "Pending"
                         });
                 });
@@ -782,6 +782,9 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("BusinessObject.Entites.User", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
 
                     b.HasDiscriminator().HasValue("User");
                 });

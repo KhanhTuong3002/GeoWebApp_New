@@ -7,6 +7,56 @@
 
 <h3>@ViewData["Title"]</h3>
 <partial name="_StatusMessage" for="StatusMessage" />
+
+<body class="w-full" data-theme="retro">
+  <div class="flex items-center justify-center min-h-screen">
+      <form class=" w-5/6 bg-base-300 p-8 shadow-lg rounded-lg space-y-4 relative">
+        <div class="flex">
+          <div class="w-full">
+            <h2 class="flex text-2xl font-bold items-center mb-3">Login to GeoTycoon</h2>
+            <div class="relative mb-4">
+              <label for="email" class="block text-sm font-bold mb-2">Email Address</label>
+              <input id="email" type="email" x-model="email" placeholder="Enter your email address"
+                class="input input-bordered w-full" />
+            </div>
+            <div class="relative mb-2">
+              <label for="password" class="block text-sm font-bold mb-2">Password</label>
+              <input id="password" type="password" x-model="password" placeholder="Enter your password"
+                class="input input-bordered w-full" />
+            </div>
+            <div class="form-control relative">
+              <label class="label cursor-pointer">
+                <span class="label-text text-sm font-bold">Remember me</span>
+                <input type="checkbox" class="toggle" checked />
+              </label>
+            </div>
+            <div class="mb-6 relative">
+              <button type="submit" class="btn btn-error w-full">Login</button>
+            </div>
+            <a href="./ForgotPass.html"
+              class="flex justify-center text-center underline text-gray-500 text-xs mb-2">Forgotten account?</a>
+            <p class="text-center text-gray-500 text-xs">
+              Don't have an account? <a href="./Register.html" class="underline">Register</a>.
+            </p>
+          </div>
+          <div class="hidden md:block items-center justify-center">
+            <div class="flex items-center justify-center h-full">
+              <img src="~/css/login.webp" alt="Description of your image">
+            </div>
+          </div>
+        </div>
+        
+        
+      </form>
+      
+
+    </div>
+
+
+</body>
+
+
+
 <div class="row">
     <div class="col-md-6">
         <form id="profile-form" method="post">

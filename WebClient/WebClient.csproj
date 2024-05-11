@@ -7,14 +7,15 @@
     <UserSecretsId>aspnet-WebClient-6378c562-a082-4646-8f76-2b9c1d8c6c16</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\Images\a1.jpg" />
+  </ItemGroup>
+
 	<ItemGroup>
-		<UpToDateCheckBuilt Include="wwwroot/css/site.css" Set="Css" />
 		<UpToDateCheckBuilt Include="tailwind.config.js" Set="Css" />
 	</ItemGroup>
 
-	<Target Name="Tailwind" BeforeTargets="Build">
-		<Exec Command="npm run css:build"/>
-	</Target>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.4" />
@@ -36,7 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Src\" />
+    <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 
 </Project>

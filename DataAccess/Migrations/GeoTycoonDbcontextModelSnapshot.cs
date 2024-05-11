@@ -581,17 +581,17 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ef947707-772d-45f3-b7a3-d4080fbdae6a",
+                            Id = "e78aeb95-3d78-4743-95eb-d2067401ba41",
                             Name = "Administrator"
                         },
                         new
                         {
-                            Id = "3bfe6362-1249-4578-b809-e6559cbb6b6b",
+                            Id = "06b41c7d-16f2-4b8d-b3c3-6aee068f9563",
                             Name = "Teacher"
                         },
                         new
                         {
-                            Id = "af75ffff-fcc5-431b-bf09-c3fea4efa770",
+                            Id = "0fc13153-6387-4fed-af4b-58fa72d48938",
                             Name = "Pending"
                         });
                 });
@@ -779,6 +779,10 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("BusinessObject.Entites.User", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+                    b.Property<string>("Avarta")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsApproved")
                         .HasColumnType("bit");

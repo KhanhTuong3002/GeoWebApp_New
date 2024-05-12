@@ -2,38 +2,38 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<ul class="navbar-nav">
+<ul class="navbar-nav flex justify-between">
     @if (SignInManager.IsSignedIn(User))
     {
-        <div class="navbar bg-base-300">
-            <div class="flex-none">
+        <div class="navbar bg-base-100">
+            <div class="">
                 <div class="dropdown dropdown-end">
-        </div>
-                <div class="dropdown dropdown-end bg-base-300 ">
-            <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-                <div class="w-10 rounded-full ">
-                    <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                </div>
+                <div class="dropdown dropdown-end">
+                    <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+                        <div class="w-10 rounded-full">
+                            <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                        </div>
+                    </div>
+                    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                        <li>
+                            <a class="nav-link text-dark" title="Manage">@User.Identity?.Name!</a>
+                        </li>
+                        <li>
+                            <a class="justify-between" asp-area="Identity" asp-page="/Account/Manage/Index">
+                                Profile
+                                <span class="badge">New</span>
+                            </a>
+                        </li>
+                        <li><a>Settings</a></li>
+                        <li class="nav-item">
+                            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                <button type="submit" class="nav-link  btn-link text-dark">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                        <li>
-                            <a class="nav-link text-dark"title="Manage">@User.Identity?.Name!</a>
-                        </li>
-                <li>
-                    <a class="justify-between" asp-area="Identity" asp-page="/Account/Manage/Index">
-                        Profile
-                        <span class="badge">New</span>
-                    </a>
-                </li>
-                <li><a>Settings</a></li>
-                <li class="nav-item">
-                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                        <button type="submit" class="no-underline text-dark">Logout</button>
-                    </form>
-                </li>
-            </ul>
-        </div>
-        </div>
         </div>
         @*     <li class="nav-item">
     <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
@@ -46,8 +46,8 @@
     }
     else
     {
-        <div class="contents">
-            <a class="btn btn-accent" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        <div class="flex items-center gap-2">
+            <a class="btn btn-accent " asp-area="Identity" asp-page="/Account/Login">Login</a>
             <a class="btn btn-success" asp-area="Identity" asp-page="/Account/Register">Register</a>
         </div>
     }

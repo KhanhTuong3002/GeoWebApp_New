@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="~/WebClient.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
 </head>
-<body>
+<body class="w-full" data-theme="retro">
     <header>
 @*         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -36,17 +36,30 @@
             <div class="flex-1">
                 <a asp-controller="Home" asp-action="Index"><img class="w-20 h-20" src="~/css/oc_preview_rev_2.png" alt="Description of your image"></a>             
             </div>
+            <label class="input input-bordered flex items-center gap-2 w-120">
+                <i data-feather="search" class="text-base-content" aria-hidden="true"></i>
+                <input type="text" placeholder="Search" x-ref="search"
+                       x-model.debounce="search"
+                       x-on:focus="focused = true"
+                       x-on:blur="focused = false"
+                       x-on:keydown.esc="$el.value = ''; $el.blur()"
+                       x-on:keydown.enter="window.location.href = `/Search?query=${$el.value}`"
+                       x-on:keydown.window.prevent.ctrl.k="$el.focus()" />
+                <kbd class="kbd kbd-sm">Ctrl</kbd>
+                <span class="text-base-content">+</span>
+                <kbd class="kbd kbd-sm">K</kbd>
+            </label>
             <partial name="_LoginPartial" />
         </div>
     </header>
 
     <div class="container max-w-screen w-full bg-base-100" data-theme="retro">
-        <main role="main" class="w-10/12 mx-auto min-h-[calc(100vh-4.5rem)] py-8">
+        <main role="main" class="w-10/12 mx-auto min-h-[calc(100vh-4.5rem)] py-2">
             @RenderBody()
         </main>
     </div>
 
-        <footer class="footer justify-center p-4 bg-base-300 text-base-content " style="
+        <footer class="footer justify-center p-4 bg-base-300 text-base-content bottom-0" style="
     position: fixed;">
             <aside>
                 <p>Copyright © 2024 - All right reserved by ACME Industries Ltd</p>

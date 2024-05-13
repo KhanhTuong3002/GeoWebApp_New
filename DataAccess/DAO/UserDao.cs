@@ -8,7 +8,14 @@ using System.Threading.Tasks;
 
 namespace DataAccess.DAO
 {
-    public class UserDao (DbContext dbContext) : BaseDao<User>(dbContext)
+    public class UserDao : BaseDao<User>
     {
+        public UserDao(DbContext dbContext) : base(dbContext)
+        {
+        }
+        public static async Task<User?> GetByIdAsync(string userId)
+        {
+            return await GetByIdAsync(userId);
+        }
     }
 }

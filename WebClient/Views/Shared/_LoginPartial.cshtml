@@ -1,7 +1,10 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿@using BusinessObject.Entites
+@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
-
+@{
+    var currentUser = await UserManager.GetUserAsync(User) as User;
+}
 <ul class="navbar-nav flex justify-between">
     @if (SignInManager.IsSignedIn(User))
     {
@@ -11,9 +14,20 @@
                 </div>
                 <div class="dropdown dropdown-end">
                     <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-                        <div class="w-10 rounded-full">
-                            <img alt="Tailwind CSS Navbar component" src="@BusinessObject.Entites.User.Avarta" />
-                        </div>
+
+                        @if (currentUser != null)
+                        {
+                            <div class="w-10 rounded-full">
+                                @if (!string.IsNullOrEmpty(currentUser.Avatar))
+                                {
+                                    <img alt="Tailwind CSS Navbar component" src="@currentUser.Avatar" />
+                                }
+                                else
+                                {
+                                    <img alt="Default Avatar" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                }
+                            </div>
+                        }
                     </div>
                     <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                         <li>

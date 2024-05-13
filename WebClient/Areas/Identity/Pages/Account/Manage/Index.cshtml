@@ -16,13 +16,14 @@
         <div class="flex">
                 <div class="hidden md:block items-center justify-center" style="padding-top: 6rem">
                     <div class="avatar" style="justify-content:center">
-
+                        <form action="/UploadImage" method="post" enctype="multipart/form-data">
                         <div class="w-1/2 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                             <label id="upload-label">
                                 <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" id="image-preview" />
                             </label>
                             <input type="file" id="file-upload" style="display: none;" accept="image/*" />
                         </div>
+                        </form>
 
                         <script>
                             document.getElementById('image-preview').addEventListener('click', function () {
@@ -101,7 +102,7 @@
                             <textarea type class="textarea textarea-bordered h-24 w-full max-w-xs" placeholder="Description"></textarea>
                         </label>
                         <div class="flex gap-2">
-                            <a class="btn btn-accent " href="">Save</a>
+                            <a class="btn btn-accent" type="submit" href="">Save</a>
                             <a class="btn btn-success  @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Change Password</a>
                         </div>
             </div>

@@ -25,7 +25,7 @@ namespace DataAccess.Repository
                     string base64String = Convert.ToBase64String(imageBytes);
 
                     // Lưu base64String vào cơ sở dữ liệu
-                    var user = await dbContext.User.FindAsync(userId);
+                    var user = await UserDao.GetByIdAsync(userId);
                     if (user != null)
                     {
                         user.Avatar = base64String;

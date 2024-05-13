@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class Misturi : Migration
+    public partial class Mistsuri : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,7 +33,7 @@ namespace DataAccess.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
-                    Avarta = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Avatar = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsApproved = table.Column<bool>(type: "bit", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -310,9 +310,9 @@ namespace DataAccess.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "06b41c7d-16f2-4b8d-b3c3-6aee068f9563", null, "Teacher", null },
-                    { "0fc13153-6387-4fed-af4b-58fa72d48938", null, "Pending", null },
-                    { "e78aeb95-3d78-4743-95eb-d2067401ba41", null, "Administrator", null }
+                    { "00e84a6b-7bf3-42f3-9137-3782e02c6508", null, "Teacher", null },
+                    { "bce476af-57c0-4b3e-a961-e68ae31cee80", null, "Administrator", null },
+                    { "bfd4f855-9734-4797-aaec-0e3eb0cdc1e6", null, "Pending", null }
                 });
 
             migrationBuilder.InsertData(

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(GeoTycoonDbcontext))]
-    [Migration("20240511002805_Misturi")]
-    partial class Misturi
+    [Migration("20240513072923_Mistsuri")]
+    partial class Mistsuri
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -584,17 +584,17 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e78aeb95-3d78-4743-95eb-d2067401ba41",
+                            Id = "bce476af-57c0-4b3e-a961-e68ae31cee80",
                             Name = "Administrator"
                         },
                         new
                         {
-                            Id = "06b41c7d-16f2-4b8d-b3c3-6aee068f9563",
+                            Id = "00e84a6b-7bf3-42f3-9137-3782e02c6508",
                             Name = "Teacher"
                         },
                         new
                         {
-                            Id = "0fc13153-6387-4fed-af4b-58fa72d48938",
+                            Id = "bfd4f855-9734-4797-aaec-0e3eb0cdc1e6",
                             Name = "Pending"
                         });
                 });
@@ -783,7 +783,7 @@ namespace DataAccess.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<string>("Avarta")
+                    b.Property<string>("Avatar")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

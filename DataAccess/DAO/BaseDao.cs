@@ -31,6 +31,11 @@ public abstract class BaseDao<T, TKey> where T : class
         DbContext.Database.BeginTransaction();
     }
 
+    public virtual async Task<T?> GetByIdAsync(TKey id)
+    {
+        return await DbSet.FindAsync(id);
+    }
+
     public virtual void Add(T entity)
     {
         DbSet.Add(entity);

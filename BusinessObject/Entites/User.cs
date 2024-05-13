@@ -16,7 +16,7 @@ namespace BusinessObject.Entites
         [Key]
         public override string Id { get; set; }
 
-        public string Avarta { get; set; }
+        public  string Avatar { get; set; }
 
         public bool IsApproved { get; set; }
 

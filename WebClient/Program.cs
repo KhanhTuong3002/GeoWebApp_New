@@ -1,10 +1,15 @@
+using BusinessObject.Entites;
 using DataAccess;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using WebClient.Areas.Identity.Pages.Account;
 using WebClient.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+
+ConfigurationManager configuration = builder.Configuration;
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -13,8 +18,35 @@ builder.Services.AddDbContext<GeoTycoonDbcontext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<GeoTycoonDbcontext>();
 builder.Services.AddControllersWithViews();
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 8;
+});
+
+// Authorize role
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Teacher", policy =>
+    {
+        policy.RequireClaim(ClaimTypes.Role, "Teacher");
+    });
+    options.AddPolicy("Student", policy =>
+    {
+        policy.RequireClaim(ClaimTypes.Role, "Student", "Pending");
+    });
+    options.AddPolicy("Admin", policy =>
+    {
+        policy.RequireClaim(ClaimTypes.Role, "Administrator");
+    });
+});
 
 var app = builder.Build();
 
@@ -44,4 +76,33 @@ app.MapRazorPages();
 //this is test code for send mail .....
 Console.WriteLine("Sending test email");
 //await RegisterModel.SendEmailAsync("Tuongvkce161108@fpt.edu.vn", "test", "test");
+
+//default admin account
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var userManager = services.GetRequiredService<UserManager<User>>();
+
+    string email = configuration["Credentials:Email"];
+    string password = configuration["Credentials:Password"];
+
+    if (await userManager.FindByEmailAsync(email) == null)
+    {
+        var user = new User
+        {
+            UserName = email,
+            Email = email,
+            EmailConfirmed = true,
+            NormalizedEmail = email.ToUpper(),
+            NormalizedUserName = email.ToUpper(),
+        };
+        var result = await userManager.CreateAsync(user, password);
+        if (result.Succeeded)
+        {
+            await userManager.AddToRoleAsync(user, "Administrator");
+        }
+    }
+}
+
 app.Run();
+

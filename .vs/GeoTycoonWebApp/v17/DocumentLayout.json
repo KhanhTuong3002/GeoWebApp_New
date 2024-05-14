@@ -29,19 +29,6 @@
           "SelectedChildIndex": 16,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\SCHOOL WORK\\2024\\SU24\\GIT FOLDER 2\\GeoWebApp_New\\WebClient\\appsettings.json",
-              "RelativeDocumentMoniker": "WebClient\\appsettings.json",
-              "ToolTip": "D:\\SCHOOL WORK\\2024\\SU24\\GIT FOLDER 2\\GeoWebApp_New\\WebClient\\appsettings.json",
-              "RelativeToolTip": "WebClient\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-05-13T06:53:24.158Z",
-              "EditorCaption": ""
-            },
-            {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
@@ -95,6 +82,18 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\SCHOOL WORK\\2024\\SU24\\GIT FOLDER 2\\GeoWebApp_New\\WebClient\\appsettings.json",
+              "RelativeDocumentMoniker": "WebClient\\appsettings.json",
+              "ToolTip": "D:\\SCHOOL WORK\\2024\\SU24\\GIT FOLDER 2\\GeoWebApp_New\\WebClient\\appsettings.json",
+              "RelativeToolTip": "WebClient\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-13T06:53:24.158Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Register.cshtml",
               "DocumentMoniker": "D:\\SCHOOL WORK\\2024\\SU24\\GIT FOLDER 2\\GeoWebApp_New\\WebClient\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
@@ -103,8 +102,7 @@
               "RelativeToolTip": "WebClient\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
               "ViewState": "AQIAAA8AAAAAAAAAAAAAACYAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-13T05:53:45.365Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-13T05:53:45.365Z"
             },
             {
               "$type": "Document",
@@ -116,8 +114,7 @@
               "RelativeToolTip": "WebClient\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
               "ViewState": "AQIAAF4AAAAAAAAAAAAiwIgAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-13T05:48:02.21Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-13T05:48:02.21Z"
             },
             {
               "$type": "Document",
@@ -127,7 +124,7 @@
               "RelativeDocumentMoniker": "WebClient\\Program.cs",
               "ToolTip": "D:\\SCHOOL WORK\\2024\\SU24\\GIT FOLDER 2\\GeoWebApp_New\\WebClient\\Program.cs",
               "RelativeToolTip": "WebClient\\Program.cs",
-              "ViewState": "AQIAACoAAAAAAAAAAAAAADUAAAAkAAAA",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAowFYAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-13T05:39:19.285Z",
               "EditorCaption": ""

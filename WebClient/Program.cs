@@ -81,14 +81,14 @@ Console.WriteLine("Sending test email");
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-    var userManager = services.GetRequiredService<UserManager<User>>();
+    var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
 
     string email = configuration["Credentials:Email"];
     string password = configuration["Credentials:Password"];
 
     if (await userManager.FindByEmailAsync(email) == null)
     {
-        var user = new User
+        var user = new IdentityUser
         {
             UserName = email,
             Email = email,

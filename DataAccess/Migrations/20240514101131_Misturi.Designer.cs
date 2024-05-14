@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(GeoTycoonDbcontext))]
-    [Migration("20240513072923_Mistsuri")]
-    partial class Mistsuri
+    [Migration("20240514101131_Misturi")]
+    partial class Misturi
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -584,18 +584,23 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "bce476af-57c0-4b3e-a961-e68ae31cee80",
+                            Id = "5ffe0843-86ac-4406-9e5e-2292618a5420",
                             Name = "Administrator"
                         },
                         new
                         {
-                            Id = "00e84a6b-7bf3-42f3-9137-3782e02c6508",
+                            Id = "954733bb-3004-4002-9348-4d16c5a50e17",
                             Name = "Teacher"
                         },
                         new
                         {
-                            Id = "bfd4f855-9734-4797-aaec-0e3eb0cdc1e6",
+                            Id = "0771a62d-45e1-449e-8649-f6ab70d8b7fe",
                             Name = "Pending"
+                        },
+                        new
+                        {
+                            Id = "0b2856a6-3d55-40f9-a17b-fbd590ab277c",
+                            Name = "Student"
                         });
                 });
 

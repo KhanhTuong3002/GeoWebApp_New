@@ -1,6 +1,7 @@
 using DataAccess;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using System.Security.Claims;
 using WebClient.Areas.Identity.Pages.Account;
 using WebClient.Data;
@@ -17,6 +18,14 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<GeoTycoonDbcontext>();
 builder.Services.AddControllersWithViews();
+
+string storagePath = Path.Combine(Directory.GetCurrentDirectory(), "Storage", "Images");
+if (!Directory.Exists(storagePath))
+{
+    Directory.CreateDirectory(storagePath);
+}
+PhysicalFileProvider fileProvider = new(storagePath);
+builder.Services.AddSingleton(fileProvider);
 
 builder.Services.Configure<IdentityOptions>(options =>
 {

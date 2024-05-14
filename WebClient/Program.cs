@@ -14,6 +14,7 @@ builder.Services.AddDbContext<GeoTycoonDbcontext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<GeoTycoonDbcontext>();
 builder.Services.AddControllersWithViews();
 
@@ -78,7 +79,7 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
-
+    var configuration = app.Configuration;
     string email = configuration["Credentials:Email"];
     string password = configuration["Credentials:Password"];
 
@@ -100,5 +101,4 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-//hahaah
 app.Run();

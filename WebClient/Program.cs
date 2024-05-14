@@ -76,6 +76,7 @@ app.MapRazorPages();
 //this is test code for send mail .....
 Console.WriteLine("Sending test email");
 //await RegisterModel.SendEmailAsync("Tuongvkce161108@fpt.edu.vn", "test", "test");
+//hahaah
 
 //default admin account
 using (var scope = app.Services.CreateScope())

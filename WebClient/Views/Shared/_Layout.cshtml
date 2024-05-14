@@ -1,55 +1,79 @@
 ﻿<!DOCTYPE html>
-<html lang="en"
-
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - GeoTycoon</title>
     <link rel="icon" type="image/svg+xml" href="~/css/oc_preview_rev_2.png">
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/lib/feather/css/feather.min.css" />
-    <script defer src="~/lib/alpinejs/persist/dist/cdn.min.js"></script>
-    <script defer src="~/lib/alpinejs/cdn.min.js"></script>
-    <script src="~/lib/moment.js/moment.min.js"></script>
-    <!-- Preload fonts -->
-    <link rel="preload" href="~/lib/feather/font/feather.woff" as="font" type="font/woff" crossorigin>
-    <link rel="preload" href="~/lib/feather/font/feather.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebClient.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
 </head>
-<body class="bg-base-100 text-base-content overflow-x-hidden">
-
-
+<body class="w-full" data-theme="retro">
     <header>
-        <nav class="navbar bg-base-200">
-            <div class="navbar-start gap-2 z-10">
-                <a class="btn btn-ghost gap-2 text-xl text-white hover:bg-transparent" asp-page="/Index">
-                    <img alt="logo" class="w-12 h-12" src="~/css/oc_preview_rev_2.png">
-                </a>
-
-
+@*         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebClient</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
             </div>
-
-            <div class="navbar-end gap-2 z-9">
-                <partial name="_LoginPartial" />
+        </nav> *@
+        <div class="navbar bg-base-300">
+            <div class="flex-1">
+                <a asp-controller="Home" asp-action="Index"><img class="w-20 h-20" src="~/css/oc_preview_rev_2.png" alt="Description of your image"></a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="UserQuestions" asp-action="Index">Privacy</a>
             </div>
-        </nav>
+            <label class="input input-bordered flex items-center gap-2 w-120">
+                <i data-feather="search" class="text-base-content" aria-hidden="true"></i>
+                <input type="text" placeholder="Search" x-ref="search"
+                       x-model.debounce="search"
+                       x-on:focus="focused = true"
+                       x-on:blur="focused = false"
+                       x-on:keydown.esc="$el.value = ''; $el.blur()"
+                       x-on:keydown.enter="window.location.href = `/Search?query=${$el.value}`"
+                       x-on:keydown.window.prevent.ctrl.k="$el.focus()" />
+                <kbd class="kbd kbd-sm">Ctrl</kbd>
+                <span class="text-base-content">+</span>
+                <kbd class="kbd kbd-sm">K</kbd>
+            </label>
+            <partial name="_LoginPartial" />
+        </div>
     </header>
-    <div class="max-w-screen w-full bg-base-100">
-        <main role="main" class="w-10/12 mx-auto min-h-[calc(100vh-4.5rem)] py-8">
+
+    <div class="container max-w-screen w-full bg-base-100" data-theme="retro">
+        <main role="main" class="w-10/12 mx-auto min-h-[calc(100vh-4.5rem)] py-2">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="footer footer-center p-10 bg-base-200 text-base-content">
-        <aside>
-            <p>Copyright © 2024 - All right reserved by ACME Industries Ltd</p>
-        </aside>
-    </footer>
-    <script src="~/lib/axios/axios.min.js"></script>
-    <script src="~/lib/lodash.js/lodash.min.js"></script>
-    <script src="~/lib/create-file-list/create-file-list.js"></script>
-    <script src="~/lib/Sortable/Sortable.min.js"></script>
-    <script src="~/js/site.js"></script>
+        <footer class="footer justify-center p-4 bg-base-300 text-base-content bottom-0" style="
+    position: fixed;">
+            <aside>
+                <p>Copyright © 2024 - All right reserved by ACME Industries Ltd</p>
+            </aside>
+        </footer>
+  
+ 
 
-    @await RenderSectionAsync("Scripts", false)
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
 </body>
+
 </html>

@@ -1,0 +1,61 @@
+﻿@page
+@model WebClient.Views.UserQuestions.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>UserQuestion</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserQuestion.Province)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserQuestion.Province.ProvinceName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserQuestion.AuthorId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserQuestion.AuthorId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserQuestion.Image)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserQuestion.Image)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserQuestion.Content)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserQuestion.Content)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserQuestion.Published)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserQuestion.Published)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserQuestion.LastUpdated)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserQuestion.LastUpdated)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserQuestion.CreatedAt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserQuestion.CreatedAt)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.UserQuestion.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

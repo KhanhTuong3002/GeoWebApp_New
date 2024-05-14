@@ -1,0 +1,60 @@
+﻿@page
+@model WebClient.Views.UserQuestions.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>UserQuestion</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="UserQuestion.Id" />
+            <div class="form-group">
+                <label asp-for="UserQuestion.ProvinceId" class="control-label"></label>
+                <select asp-for="UserQuestion.ProvinceId" class="form-control" asp-items="ViewBag.ProvinceId"></select>
+                <span asp-validation-for="UserQuestion.ProvinceId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserQuestion.AuthorId" class="control-label"></label>
+                <input asp-for="UserQuestion.AuthorId" class="form-control" />
+                <span asp-validation-for="UserQuestion.AuthorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserQuestion.Image" class="control-label"></label>
+                <input asp-for="UserQuestion.Image" class="form-control" />
+                <span asp-validation-for="UserQuestion.Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserQuestion.Content" class="control-label"></label>
+                <input asp-for="UserQuestion.Content" class="form-control" />
+                <span asp-validation-for="UserQuestion.Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserQuestion.Published" class="control-label"></label>
+                <input asp-for="UserQuestion.Published" class="form-control" />
+                <span asp-validation-for="UserQuestion.Published" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserQuestion.CreatedAt" class="control-label"></label>
+                <input asp-for="UserQuestion.CreatedAt" class="form-control" />
+                <span asp-validation-for="UserQuestion.CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,6 +1,7 @@
 using DataAccess;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using WebClient.Areas.Identity.Pages.Account;
 using WebClient.Data;
 
@@ -13,9 +14,9 @@ builder.Services.AddDbContext<GeoTycoonDbcontext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<GeoTycoonDbcontext>();
 builder.Services.AddControllersWithViews();
-
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -78,7 +79,7 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
-
+    var configuration = app.Configuration;
     string email = configuration["Credentials:Email"];
     string password = configuration["Credentials:Password"];
 

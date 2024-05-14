@@ -1,15 +1,10 @@
-using BusinessObject.Entites;
 using DataAccess;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
 using WebClient.Areas.Identity.Pages.Account;
 using WebClient.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-
-ConfigurationManager configuration = builder.Configuration;
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -18,9 +13,9 @@ builder.Services.AddDbContext<GeoTycoonDbcontext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<GeoTycoonDbcontext>();
 builder.Services.AddControllersWithViews();
+
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -47,8 +42,9 @@ builder.Services.AddAuthorization(options =>
         policy.RequireClaim(ClaimTypes.Role, "Administrator");
     });
 });
-
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -105,4 +101,3 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.Run();
-

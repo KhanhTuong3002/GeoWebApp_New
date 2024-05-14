@@ -8,28 +8,27 @@
 <ul class="navbar-nav flex justify-between">
     @if (SignInManager.IsSignedIn(User))
     {
-        <div class="navbar bg-base-300">
+        <div class="navbar bg-base-200">
             <div class="">
                 <div class="dropdown dropdown-end">
                 </div>
                 <div class="dropdown dropdown-end">
                     <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-
-                        @if (currentUser != null)
-                        {
-                            <div class="w-10 rounded-full">
-                                @if (!string.IsNullOrEmpty(currentUser.Avatar))
+                        <div class="w-10 rounded-full">        
+                       
+                                @if (!string.IsNullOrEmpty(currentUser?.Avatar))
                                 {
                                     <img alt="Tailwind CSS Navbar component" src="@currentUser.Avatar" />
+             
                                 }
                                 else
                                 {
-                                    <img alt="Default Avatar" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                <img alt="Default Avatar" src="https://h5p.org/sites/default/files/h5p/content/1209180/images/file-6113d5f8845dc.jpeg" />
                                 }
-                            </div>
-                        }
+                       
+                        </div>
                     </div>
-                    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box inline-block">
                         <li>
                             <a class="nav-link text-dark" title="Manage">@User.Identity?.Name!</a>
                         </li>
@@ -40,9 +39,9 @@
                             </a>
                         </li>
                         <li><a>Settings</a></li>
-                        <li class="nav-item">
+                        <li>
                             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                                <button type="submit" class="nav-link no-underline text-dark">Logout</button>
+                                <button type="submit" class="no-underline text-dark">Sign out your account</button>
                             </form>
                         </li>
                     </ul>

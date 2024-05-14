@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
-    
+
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
 
@@ -10,110 +10,102 @@
 
 
 
-<body class="w-full" data-theme="retro">
-  <div class="flex items-center justify-center m-8">
-      <form class=" w-3/4 bg-base-300 p-8 shadow-lg rounded-lg space-y-4 relative">
+
+<div class="flex items-center justify-center min-h-screen">
+    <form class="w-full h-fit max-w-4xl bg-base-300 p-8 shadow-lg rounded-lg">
         <div class="flex">
-                <div class="hidden md:block items-center justify-center" style="padding-top: 6rem">
-                    <div class="avatar" style="justify-content:center">
-                        <form action="/UploadImage" method="post" enctype="multipart/form-data">
-                        <div class="w-1/2 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <div class="hidden md:block items-center justify-center" style="padding-top: 3rem">
+                <div class="avatar" style="justify-content:center">
+                    <form action="/UploadImage" method="post" enctype="multipart/form-data">
+                        <div class="w-3/4 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2" style="width:65%">
                             <label id="upload-label">
                                 <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" id="image-preview" />
                             </label>
                             <input type="file" id="file-upload" style="display: none;" accept="image/*" />
                         </div>
-                        </form>
+                    </form>
 
-                        <script>
-                            document.getElementById('image-preview').addEventListener('click', function () {
-                                document.getElementById('file-upload').click();
-                            });
+                    <script>
+                        document.getElementById('image-preview').addEventListener('click', function () {
+                            document.getElementById('file-upload').click();
+                        });
 
-                            document.getElementById('file-upload').addEventListener('change', function (e) {
-                                const reader = new FileReader();
-                                reader.onload = function (event) {
-                                    document.getElementById('image-preview').src = event.target.result;
-                                };
-                                reader.readAsDataURL(e.target.files[0]);
-                            });
-                        </script>
+                        document.getElementById('file-upload').addEventListener('change', function (e) {
+                            const reader = new FileReader();
+                            reader.onload = function (event) {
+                                document.getElementById('image-preview').src = event.target.result;
+                            };
+                            reader.readAsDataURL(e.target.files[0]);
+                        });
+                    </script>
 
+                </div>
+                <div>
+                    <a class="block text-sm font-bold mb-2 pt-4 flex" style="justify-content:center">
+                        @User.Identity?.Name!
+                    </a>
+                </div>
+            </div>
+            <div class="w-full">
+                <h2 class="flex text-2xl font-bold items-center mb-3">Your Profile</h2>
+                <div class="flex w-full space-x-4 mb-2">
+                    <div class="relative w-1/2 mr-2">
+                        <label class="block text-sm font-bold mb-2">First Name</label>
+                        <input disabled value="Hao" autocomplete="username" aria-required="true" placeholder="Enter your first name"
+                               class="input input-bordered w-full" />
+                        <span class="text-danger"></span>
                     </div>
-                    <div>
-                        <a class="block text-sm font-bold mb-2 pt-4 flex" style="justify-content:center">
-                            @User.Identity?.Name!
-                        </a>
+                    <div class="relative w-1/2">
+                        <label class="block text-sm font-bold mb-2">Last Name</label>
+                        <input disabled value="Qiong" autocomplete="username" aria-required="true" placeholder="Enter your last name"
+                               class="input input-bordered w-full" />
+                        <span class="text-danger"></span>
                     </div>
                 </div>
-          <div class="w-full">
-            <h2 class="flex text-2xl font-bold items-center mb-3">Your Profile</h2>
+                <div class="relative mb-2">
+                    <label class="block text-sm font-bold mb-2">Phone</label>
+                    <input disabled value="0886677921" autocomplete="username" aria-required="true" placeholder="Enter your phone"
+                           class="input input-bordered w-full" />
+                    <span class="text-danger"></span>
 
-            <div class="relative mb-4 d-inline-flex">
-
-                        <label class="w-full max-w-xs">
-                            <div class="label">
-                                <a class="block text-sm font-bold mb-2">First name</a>
-                            </div>
-                            <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-                        </label>
-
-                        <div style="margin-right: 5rem;"></div>
-
-                        <label class="w-full max-w-xs">
-                            <div class="label">
-                                <a class="block text-sm font-bold mb-2">last name</a>
-                            </div>
-                            <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-                        </label>
-            </div>
-
-            <div class="relative mb-2">
-              <label for="password" class="block text-sm font-bold mb-2">Phone</label>
-              <input id="password" type="password" x-model="password" placeholder="Enter your phone"
-                class="input input-bordered w-full" />
-            </div>
-
-                    <div class="relative mb-4 d-inline-flex">
-
-                        <label class="w-full max-w-xs">
-                            <div class="label">
-                                <a class="block text-sm font-bold mb-2">First name</a>
-                            </div>
-                            <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-                        </label>
-
-                        <div style="margin-right: 5rem;"></div>
-
-                        <label class="w-full max-w-xs">
-                            <div class="label">
-                                <a class="block text-sm font-bold mb-2">last name</a>
-                            </div>
-                            <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-                        </label>
+                </div>
+                <div class="flex w-full space-x-4 mb-2">
+                    <div class="relative w-1/2 mr-2">
+                        <label class="block text-sm font-bold mb-2">City</label>
+                        <select disabled autocomplete="username" aria-required="true" placeholder="Select your city"
+                                class="input input-bordered w-full">
+                            <option value="Can Tho">Can Tho</option>
+                            <option value="Ho Chi Minh">Ho Chi Minh</option>
+                        </select>
                     </div>
+                    <div class="relative w-1/2">
+                        <label class="block text-sm font-bold mb-2">State</label>
+                        <select disabled autocomplete="username" aria-required="true" placeholder="Select your state"
+                                class="input input-bordered w-full">
+                            <option value="Vietnam">Vietnam</option>
+                            <option value="Japan">Japan</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="relative mb-6">
+                    <label class="block text-sm font-bold mb-2">Description</label>
+                    <textarea disabled type class="textarea textarea-bordered h-24 w-full" placeholder="Description"></textarea>
+                </div>
 
-
-            <div class="mb-6 relative">
-                        <label class="w-full max-w-xs ">
-                            <div class="label">
-                                <span class="label-text text-sm font-bold mb-2">Description</span>
-                            </div>
-                            <textarea type class="textarea textarea-bordered h-24 w-full max-w-xs" placeholder="Description"></textarea>
-                        </label>
-                        <div class="flex gap-2">
-                            <a class="btn btn-accent" type="submit" href="">Save</a>
-                            <a class="btn btn-success  @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Change Password</a>
-                        </div>
+                <div class="mb-6 relative">
+                    <div class="flex gap-2">
+                        <a class="btn btn-accent" type="submit" href="">Edit Profile</a>
+                        <a class="btn btn-success  @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Change Password</a>
+                    </div>
+                </div>
             </div>
-          </div>     
-      </form>
-      
-
-    </div>
+    </form>
 
 
-</body>
+</div>
+
+
+
 @* <body class="w-full" data-theme="retro">
   <div class="flex items-center justify-center min-h-screen">
       <form class=" w-5/6 bg-base-300 p-8 shadow-lg rounded-lg space-y-4 relative">
@@ -133,7 +125,7 @@
                         <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
                     </form>
                 </div>
-            </div>  
+            </div>
       </form>
     </div>
 </body> *@

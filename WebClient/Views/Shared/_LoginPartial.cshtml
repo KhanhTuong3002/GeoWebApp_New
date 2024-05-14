@@ -8,7 +8,7 @@
 <ul class="navbar-nav flex justify-between">
     @if (SignInManager.IsSignedIn(User))
     {
-        <div class="navbar bg-base-300">
+        <div class="navbar bg-base-200">
             <div class="">
                 <div class="dropdown dropdown-end">
                 </div>
@@ -28,7 +28,7 @@
                        
                         </div>
                     </div>
-                    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box inline-block">
                         <li>
                             <a class="nav-link text-dark" title="Manage">@User.Identity?.Name!</a>
                         </li>

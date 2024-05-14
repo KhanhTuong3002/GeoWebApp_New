@@ -7,12 +7,12 @@
 
 
 
-<body class="w-full" data-theme="retro">
-    <div class="flex items-center justify-center m-8">
+<body>
+    <div class="flex items-center justify-center min-h-screen">
         <form id="account" method="post" class=" w-1/2 bg-base-300 p-8 shadow-lg rounded-lg space-y-4 relative">
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="flex">
-                <div class="w-full">
+                <div class="w-full mr-8">
                     <h2 class="flex text-2xl font-bold items-center mb-3">Login to GeoTycoon</h2>
                     <div class="relative mb-4">
                         <label asp-for="Input.Email" class="block text-sm font-bold mb-2">Email Address</label>

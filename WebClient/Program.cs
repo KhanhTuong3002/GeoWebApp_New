@@ -1,6 +1,7 @@
 using DataAccess;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using WebClient.Areas.Identity.Pages.Account;
 using WebClient.Data;
 
@@ -16,6 +17,31 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<GeoTycoonDbcontext>();
 builder.Services.AddControllersWithViews();
 
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 8;
+});
+
+// Authorize role
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Teacher", policy =>
+    {
+        policy.RequireClaim(ClaimTypes.Role, "Teacher");
+    });
+    options.AddPolicy("Student", policy =>
+    {
+        policy.RequireClaim(ClaimTypes.Role, "Student", "Pending");
+    });
+    options.AddPolicy("Admin", policy =>
+    {
+        policy.RequireClaim(ClaimTypes.Role, "Administrator");
+    });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

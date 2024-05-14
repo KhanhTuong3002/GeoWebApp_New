@@ -44,32 +44,4 @@ app.MapRazorPages();
 //this is test code for send mail .....
 Console.WriteLine("Sending test email");
 //await RegisterModel.SendEmailAsync("Tuongvkce161108@fpt.edu.vn", "test", "test");
-//hahaah
-
-//default admin account
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
-
-    string email = configuration["Credentials:Email"];
-    string password = configuration["Credentials:Password"];
-
-    if (await userManager.FindByEmailAsync(email) == null)
-    {
-        var user = new IdentityUser
-        {
-            UserName = email,
-            Email = email,
-            EmailConfirmed = true,
-            NormalizedEmail = email.ToUpper(),
-            NormalizedUserName = email.ToUpper(),
-        };
-        var result = await userManager.CreateAsync(user, password);
-        if (result.Succeeded)
-        {
-            await userManager.AddToRoleAsync(user, "Administrator");
-        }
-    }
-}
 app.Run();

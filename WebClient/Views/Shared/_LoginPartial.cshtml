@@ -18,11 +18,12 @@
                        
                                 @if (!string.IsNullOrEmpty(currentUser?.Avatar))
                                 {
-                                    <img alt="Tailwind CSS Navbar component" src="@currentUser.Avatar" />
-             
-                                }
-                                else
-                                {
+                                <img alt="Tailwind CSS Navbar component" src="@currentUser.Avatar" />
+
+                            }
+                            else
+                            {
+                                Console.WriteLine(currentUser + "-------------------------NULL------------------------------");
                                 <img alt="Default Avatar" src="https://h5p.org/sites/default/files/h5p/content/1209180/images/file-6113d5f8845dc.jpeg" />
                                 }
                        

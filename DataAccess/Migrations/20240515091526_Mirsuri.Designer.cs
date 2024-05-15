@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(GeoTycoonDbcontext))]
-    [Migration("20240514101131_Misturi")]
-    partial class Misturi
+    [Migration("20240515091526_Mirsuri")]
+    partial class Mirsuri
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -389,11 +389,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(450)")
                         .HasColumnName("question_id");
 
-                    b.Property<string>("AuthorId")
-                        .IsRequired()
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -413,10 +408,12 @@ namespace DataAccess.Migrations
                     b.Property<int>("ProvinceId")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset?>("Published")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("Published")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(450)
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -516,11 +513,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(450)")
                         .HasColumnName("Uquestion_id");
 
-                    b.Property<string>("AuthorId")
-                        .IsRequired()
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -540,10 +532,12 @@ namespace DataAccess.Migrations
                     b.Property<int>("ProvinceId")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset?>("Published")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("Published")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(450)
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -584,22 +578,22 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5ffe0843-86ac-4406-9e5e-2292618a5420",
+                            Id = "18a7195f-fa07-4759-b288-c98f064df007",
                             Name = "Administrator"
                         },
                         new
                         {
-                            Id = "954733bb-3004-4002-9348-4d16c5a50e17",
+                            Id = "a153374d-4099-47a1-aa89-2c49e66b3b65",
                             Name = "Teacher"
                         },
                         new
                         {
-                            Id = "0771a62d-45e1-449e-8649-f6ab70d8b7fe",
+                            Id = "db77f4a9-f9c4-490e-a9d0-354e32ac00cd",
                             Name = "Pending"
                         },
                         new
                         {
-                            Id = "0b2856a6-3d55-40f9-a17b-fbd590ab277c",
+                            Id = "733f9b70-0ec2-4d4d-a977-2e339ce3c158",
                             Name = "Student"
                         });
                 });
@@ -819,7 +813,9 @@ namespace DataAccess.Migrations
 
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Province");
 
@@ -858,7 +854,9 @@ namespace DataAccess.Migrations
 
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Province");
 

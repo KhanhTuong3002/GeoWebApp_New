@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class Misturi : Migration
+    public partial class Mirsuri : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -180,11 +180,10 @@ namespace DataAccess.Migrations
                 {
                     question_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProvinceId = table.Column<int>(type: "int", nullable: false),
-                    AuthorId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Published = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    Published = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastUpdated = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
                 },
@@ -195,7 +194,8 @@ namespace DataAccess.Migrations
                         name: "FK_Questions_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Questions_Province_ProvinceId",
                         column: x => x.ProvinceId,
@@ -210,11 +210,10 @@ namespace DataAccess.Migrations
                 {
                     Uquestion_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProvinceId = table.Column<int>(type: "int", nullable: false),
-                    AuthorId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Published = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    Published = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastUpdated = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
                 },
@@ -225,7 +224,8 @@ namespace DataAccess.Migrations
                         name: "FK_UserQuestions_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_UserQuestions_Province_ProvinceId",
                         column: x => x.ProvinceId,
@@ -310,10 +310,10 @@ namespace DataAccess.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "0771a62d-45e1-449e-8649-f6ab70d8b7fe", null, "Pending", null },
-                    { "0b2856a6-3d55-40f9-a17b-fbd590ab277c", null, "Student", null },
-                    { "5ffe0843-86ac-4406-9e5e-2292618a5420", null, "Administrator", null },
-                    { "954733bb-3004-4002-9348-4d16c5a50e17", null, "Teacher", null }
+                    { "18a7195f-fa07-4759-b288-c98f064df007", null, "Administrator", null },
+                    { "733f9b70-0ec2-4d4d-a977-2e339ce3c158", null, "Student", null },
+                    { "a153374d-4099-47a1-aa89-2c49e66b3b65", null, "Teacher", null },
+                    { "db77f4a9-f9c4-490e-a9d0-354e32ac00cd", null, "Pending", null }
                 });
 
             migrationBuilder.InsertData(

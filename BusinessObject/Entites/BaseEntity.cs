@@ -14,10 +14,10 @@ namespace BusinessObject.Entites
     public abstract class BaseEntity<TId> : IEntity<TId>
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTimeOffset? LastUpdated { get; set; }
+        public DateTime LastUpdated { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public DateTimeOffset CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]

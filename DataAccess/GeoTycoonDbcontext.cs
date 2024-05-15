@@ -17,9 +17,7 @@ namespace DataAccess
 
         public virtual DbSet<Question> Questions { get; init; } = default!;
         public virtual DbSet<User> Users { get; init; } = default!;
-        public virtual DbSet<Answer> Answers { get; init; } = default!;
         public virtual DbSet<Tracking> Trackings { get; init; } = default!;
-        public virtual DbSet<UserAnswer> UserAnswers { get; init; } = default!;
         public virtual DbSet<UserQuestion> UserQuestions { get; init; } = default!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -22,42 +22,6 @@ namespace DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("BusinessObject.Entites.Answer", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)")
-                        .HasColumnName("answer_id");
-
-                    b.Property<string>("Answers")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool?>("IsCorrect")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LastUpdated")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("QuestionId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("QuestionId");
-
-                    b.ToTable("Answers");
-                });
-
             modelBuilder.Entity("BusinessObject.Entites.Province", b =>
                 {
                     b.Property<int>("Id")
@@ -386,35 +350,59 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(450)")
                         .HasColumnName("question_id");
 
-                    b.Property<string>("AuthorId")
+                    b.Property<string>("Answer")
                         .IsRequired()
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset>("CreatedAt")
+                    b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetimeoffset");
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset?>("LastUpdated")
+                    b.Property<DateTime>("LastUpdated")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("datetimeoffset");
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Option_A")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Option_B")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Option_C")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Option_D")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProvinceId")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset?>("Published")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("Published")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(450)
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("isCorrect")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -432,78 +420,42 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(450)")
                         .HasColumnName("tracking_id");
 
+                    b.Property<string>("Answers")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetimeoffset");
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset?>("LastUpdated")
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LastUpdated")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("datetimeoffset");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UpdAnswers")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UpdContent")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UpdDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UquestionId")
+                    b.Property<string>("questionId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UquestionId");
+                    b.HasIndex("questionId");
 
                     b.ToTable("Trackings");
-                });
-
-            modelBuilder.Entity("BusinessObject.Entites.UserAnswer", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)")
-                        .HasColumnName("Uanswer_id");
-
-                    b.Property<DateTimeOffset>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool?>("IsCorrect")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LastUpdated")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Uanswers")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UquestionId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UquestionId");
-
-                    b.ToTable("UserAnswers");
                 });
 
             modelBuilder.Entity("BusinessObject.Entites.UserQuestion", b =>
@@ -513,35 +465,59 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(450)")
                         .HasColumnName("Uquestion_id");
 
-                    b.Property<string>("AuthorId")
+                    b.Property<string>("Answer")
                         .IsRequired()
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset>("CreatedAt")
+                    b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetimeoffset");
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset?>("LastUpdated")
+                    b.Property<DateTime>("LastUpdated")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("datetimeoffset");
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Option_A")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Option_B")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Option_C")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Option_D")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProvinceId")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset?>("Published")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("Published")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(450)
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("isCorrect")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -581,22 +557,22 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5ffe0843-86ac-4406-9e5e-2292618a5420",
+                            Id = "f8508e04-b276-44b9-947c-d0eed42f18a5",
                             Name = "Administrator"
                         },
                         new
                         {
-                            Id = "954733bb-3004-4002-9348-4d16c5a50e17",
+                            Id = "b3c793f2-b341-488a-8de1-7eb6d8e68657",
                             Name = "Teacher"
                         },
                         new
                         {
-                            Id = "0771a62d-45e1-449e-8649-f6ab70d8b7fe",
+                            Id = "e980d252-f0df-4df8-ac76-3c329b59dea0",
                             Name = "Pending"
                         },
                         new
                         {
-                            Id = "0b2856a6-3d55-40f9-a17b-fbd590ab277c",
+                            Id = "a1d4224b-389c-4a6f-b4b9-14de581f9c99",
                             Name = "Student"
                         });
                 });
@@ -795,17 +771,6 @@ namespace DataAccess.Migrations
                     b.HasDiscriminator().HasValue("User");
                 });
 
-            modelBuilder.Entity("BusinessObject.Entites.Answer", b =>
-                {
-                    b.HasOne("BusinessObject.Entites.Question", "Question")
-                        .WithMany()
-                        .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Question");
-                });
-
             modelBuilder.Entity("BusinessObject.Entites.Question", b =>
                 {
                     b.HasOne("BusinessObject.Entites.Province", "Province")
@@ -816,7 +781,9 @@ namespace DataAccess.Migrations
 
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Province");
 
@@ -827,18 +794,7 @@ namespace DataAccess.Migrations
                 {
                     b.HasOne("BusinessObject.Entites.UserQuestion", "UserQuestion")
                         .WithMany()
-                        .HasForeignKey("UquestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("UserQuestion");
-                });
-
-            modelBuilder.Entity("BusinessObject.Entites.UserAnswer", b =>
-                {
-                    b.HasOne("BusinessObject.Entites.UserQuestion", "UserQuestion")
-                        .WithMany()
-                        .HasForeignKey("UquestionId")
+                        .HasForeignKey("questionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -855,7 +811,9 @@ namespace DataAccess.Migrations
 
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Province");
 

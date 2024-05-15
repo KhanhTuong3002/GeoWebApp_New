@@ -14,12 +14,12 @@ namespace BusinessObject.Entites
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
-        [ForeignKey(nameof(UserQuestion))] public string UquestionId { get; set; }
+        [ForeignKey(nameof(UserQuestion))] public string questionId { get; set; }
         public virtual UserQuestion UserQuestion { get; set; } = default!;
         public int AuthorId { get; set; }
-        public string UpdContent { get; set; }
-        public string UpdAnswers { get; set; }
-        public string UpdDescription { get; set; }
-        public String Status { get; set; }
+        public string Content { get; set; }
+        public string Answers { get; set; }
+        public string Description { get; set; }
+        public string Status { get; set; }
     }
 }

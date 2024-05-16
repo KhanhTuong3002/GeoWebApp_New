@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(GeoTycoonDbcontext))]
-    [Migration("20240516080903_Mirsur")]
-    partial class Mirsur
+    [Migration("20240515091526_Mirsuri")]
+    partial class Mirsuri
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -397,7 +397,7 @@ namespace DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("Images")
+                    b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -532,8 +532,8 @@ namespace DataAccess.Migrations
                     b.Property<int>("ProvinceId")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset?>("Published")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("Published")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -578,27 +578,23 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "fb9f1de8-87ed-479b-9634-8a2be8867f8f",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
+                            Id = "18a7195f-fa07-4759-b288-c98f064df007",
+                            Name = "Administrator"
                         },
                         new
                         {
-                            Id = "252925c4-fbe4-4904-a911-4a251c83d0f0",
-                            Name = "Teacher",
-                            NormalizedName = "TEACHER"
+                            Id = "a153374d-4099-47a1-aa89-2c49e66b3b65",
+                            Name = "Teacher"
                         },
                         new
                         {
-                            Id = "67100c96-c414-4fad-801c-fc522ee617ce",
-                            Name = "Pending",
-                            NormalizedName = "PENDING"
+                            Id = "db77f4a9-f9c4-490e-a9d0-354e32ac00cd",
+                            Name = "Pending"
                         },
                         new
                         {
-                            Id = "cead6c12-a8df-4bca-a7b4-1dd09dbd44f6",
-                            Name = "Student",
-                            NormalizedName = "STUDENT"
+                            Id = "733f9b70-0ec2-4d4d-a977-2e339ce3c158",
+                            Name = "Student"
                         });
                 });
 

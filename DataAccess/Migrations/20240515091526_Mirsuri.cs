@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class Mirsur : Migration
+    public partial class Mirsuri : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -181,7 +181,7 @@ namespace DataAccess.Migrations
                     question_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProvinceId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
-                    Images = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Published = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastUpdated = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
@@ -213,7 +213,7 @@ namespace DataAccess.Migrations
                     UserId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Published = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    Published = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastUpdated = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
                 },
@@ -310,10 +310,10 @@ namespace DataAccess.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "252925c4-fbe4-4904-a911-4a251c83d0f0", null, "Teacher", "TEACHER" },
-                    { "67100c96-c414-4fad-801c-fc522ee617ce", null, "Pending", "PENDING" },
-                    { "cead6c12-a8df-4bca-a7b4-1dd09dbd44f6", null, "Student", "STUDENT" },
-                    { "fb9f1de8-87ed-479b-9634-8a2be8867f8f", null, "Administrator", "ADMINISTRATOR" }
+                    { "18a7195f-fa07-4759-b288-c98f064df007", null, "Administrator", null },
+                    { "733f9b70-0ec2-4d4d-a977-2e339ce3c158", null, "Student", null },
+                    { "a153374d-4099-47a1-aa89-2c49e66b3b65", null, "Teacher", null },
+                    { "db77f4a9-f9c4-490e-a9d0-354e32ac00cd", null, "Pending", null }
                 });
 
             migrationBuilder.InsertData(

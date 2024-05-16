@@ -7,13 +7,6 @@
     <title>@ViewData["Title"] - GeoTycoon</title>
     <link rel="icon" type="image/svg+xml" href="~/css/oc_preview_rev_2.png">
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/lib/feather/css/feather.min.css" />
-    <script defer src="~/lib/alpinejs/persist/dist/cdn.min.js"></script>
-    <script defer src="~/lib/alpinejs/cdn.min.js"></script>
-    <script src="~/lib/moment.js/moment.min.js"></script>
-    <!-- Preload fonts -->
-    <link rel="preload" href="~/lib/feather/font/feather.woff" as="font" type="font/woff" crossorigin>
-    <link rel="preload" href="~/lib/feather/font/feather.ttf" as="font" type="font/ttf" crossorigin>
 </head>
 <body class="bg-base-100 text-base-content overflow-x-hidden">
 
@@ -25,7 +18,9 @@
                     <img alt="logo" class="w-12 h-12" src="~/css/oc_preview_rev_2.png">
                 </a>
 
-
+                        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </li>
             </div>
 
             <div class="navbar-end gap-2 z-9">
@@ -44,11 +39,6 @@
             <p>Copyright © 2024 - All right reserved by ACME Industries Ltd</p>
         </aside>
     </footer>
-    <script src="~/lib/axios/axios.min.js"></script>
-    <script src="~/lib/lodash.js/lodash.min.js"></script>
-    <script src="~/lib/create-file-list/create-file-list.js"></script>
-    <script src="~/lib/Sortable/Sortable.min.js"></script>
-    <script src="~/js/site.js"></script>
 
     @await RenderSectionAsync("Scripts", false)
 </body>

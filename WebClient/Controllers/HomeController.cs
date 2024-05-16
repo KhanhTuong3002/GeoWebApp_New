@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebClient.Models;
@@ -17,7 +18,7 @@ namespace WebClient.Controllers
         {
             return View();
         }
-
+        [Authorize(Policy = "Admin")]
         public IActionResult Privacy()
         {
             return View();

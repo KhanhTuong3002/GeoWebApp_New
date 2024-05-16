@@ -112,12 +112,20 @@ namespace WebClient.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
+
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
 
                 var loginUser = _userManager.FindByEmailAsync(Input.Email).Result;
+
+                if (loginUser == null)
+                {
+                    ModelState.AddModelError(string.Empty, "Account does not exist.");
+                    return Page();
+                }
                 var userRole = await _userManager.GetRolesAsync(loginUser);
+
                 var userClaims = new List<Claim>()
                 {
                     new Claim (ClaimTypes.Email, loginUser.Email),

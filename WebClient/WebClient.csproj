@@ -38,6 +38,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Identity\Data\" />
+    <Folder Include="Data\" />
     <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 

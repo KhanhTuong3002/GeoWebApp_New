@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using System.Security.Claims;
 using WebClient.Areas.Identity.Pages.Account;
-using WebClient.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

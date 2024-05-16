@@ -1,6 +1,7 @@
 {
   "name": "web",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "build": "npx tailwindcss build -c ./src/tailwind.config.js -i ./src/tailwind.input.css -o ./wwwroot/css/site.css --minify",
@@ -9,9 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "daisyui": "^4.11.1",
+    "daisyui": "^4.7.3",
     "tailwindcss": "^3.4.1"
-  },
-  "keywords": [],
-  "description": ""
+  }
 }

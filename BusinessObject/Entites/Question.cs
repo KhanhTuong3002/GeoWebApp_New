@@ -20,11 +20,11 @@ namespace BusinessObject.Entites
         public int ProvinceId { get; set; }
         public virtual Province Province { get; set; }
         [MaxLength(450)]
-        [ForeignKey(nameof(IdentityUser))] public string UserId { get; set; }
+        [ForeignKey(nameof(IdentityUser))] public string AuthorId { get; set; }
         public virtual IdentityUser User { get; set; } = default!;
-        public string Images { get; set; }
-        public string Content { get; set; } = default!;
-        public DateTime Published { get; set; }
+        public string Image { get; set; }
+        public required string Content { get; set; } = default!;
+        public DateTimeOffset? Published { get; set; }
      
 
 

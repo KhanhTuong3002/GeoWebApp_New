@@ -386,6 +386,11 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(450)")
                         .HasColumnName("question_id");
 
+                    b.Property<string>("AuthorId")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -394,7 +399,7 @@ namespace DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("Images")
+                    b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -405,12 +410,10 @@ namespace DataAccess.Migrations
                     b.Property<int>("ProvinceId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Published")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTimeOffset?>("Published")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasMaxLength(450)
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -510,6 +513,11 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(450)")
                         .HasColumnName("Uquestion_id");
 
+                    b.Property<string>("AuthorId")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -533,8 +541,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasMaxLength(450)
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -575,23 +581,18 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f5a18983-703f-4dd4-9888-fd1f7c775722",
+                            Id = "bce476af-57c0-4b3e-a961-e68ae31cee80",
                             Name = "Administrator"
                         },
                         new
                         {
-                            Id = "48fc1319-bf5c-4922-887a-5e3915c816d1",
+                            Id = "00e84a6b-7bf3-42f3-9137-3782e02c6508",
                             Name = "Teacher"
                         },
                         new
                         {
-                            Id = "1182f43b-6852-4848-aa17-29eaece823d6",
+                            Id = "bfd4f855-9734-4797-aaec-0e3eb0cdc1e6",
                             Name = "Pending"
-                        },
-                        new
-                        {
-                            Id = "591f3127-fe71-402c-9888-3e23f330c422",
-                            Name = "Student"
                         });
                 });
 
@@ -810,9 +811,7 @@ namespace DataAccess.Migrations
 
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Province");
 
@@ -851,9 +850,7 @@ namespace DataAccess.Migrations
 
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Province");
 

@@ -16,8 +16,7 @@ namespace DataAccess
             [
                 new IdentityRole("Administrator"),
                 new IdentityRole("Teacher"),
-                new IdentityRole("Pending"),
-                new IdentityRole("Student")
+                new IdentityRole("Pending")
             ];
         }
     }

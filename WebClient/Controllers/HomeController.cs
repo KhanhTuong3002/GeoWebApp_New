@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebClient.Models;
@@ -13,6 +14,7 @@ namespace WebClient.Controllers
             _logger = logger;
         }
 
+        [Authorize(Policy = "Admin")]
         public IActionResult Index()
         {
             return View();

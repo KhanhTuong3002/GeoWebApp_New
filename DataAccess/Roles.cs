@@ -13,12 +13,32 @@ namespace DataAccess
         private static partial class Default
         {
             public static readonly IdentityRole[] Roles =
-            [
-                new IdentityRole("Administrator"),
-                new IdentityRole("Teacher"),
-                new IdentityRole("Pending"),
-                new IdentityRole("Student")
-            ];
+            {
+                new IdentityRole
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Name = "Administrator",
+                    NormalizedName = "ADMINISTRATOR"
+                },
+                new IdentityRole
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Name = "Teacher",
+                    NormalizedName = "TEACHER"
+                },
+                new IdentityRole
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Name = "Pending",
+                    NormalizedName = "PENDING"
+                },
+                new IdentityRole
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Name = "Student",
+                    NormalizedName = "STUDENT"
+                }
+            };
         }
     }
 }

@@ -17,7 +17,7 @@ namespace DataAccess.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.4")
+                .HasAnnotation("ProductVersion", "8.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -575,25 +575,31 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "56c8983e-81f8-4372-b4ad-506483ac2c5c",
+          Id = "d458b4a6-ccf6-49db-a282-c933c5a189a1",
+
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "67b52758-5673-40e4-9057-0381a86208bb",
-                            Name = "Teacher",
+
+                            Id = "b8635eae-b1ba-497b-9c09-97a72b0587ac",
+             Name = "Teacher",
                             NormalizedName = "TEACHER"
                         },
                         new
                         {
-                            Id = "7eb0f01f-0e6f-445d-a45c-4c2ff64f7e2a",
+
+                            Id = "c8c84e9c-b8e2-4250-85f1-01c60f93d380",
+
                             Name = "Pending",
                             NormalizedName = "PENDING"
                         },
                         new
                         {
-                            Id = "1da56eb1-07ce-4171-be3d-b80800e3abf7",
+
+                            Id = "0c5420d4-d415-4f99-b524-286945a60976",
+
                             Name = "Student",
                             NormalizedName = "STUDENT"
                         });
@@ -726,10 +732,12 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -766,10 +774,12 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");

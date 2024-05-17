@@ -8,9 +8,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "description": "",
   "devDependencies": {
-    "daisyui": "^4.11.1",
     "tailwindcss": "^3.4.3"
-  },
-  "description": ""
+  }
 }

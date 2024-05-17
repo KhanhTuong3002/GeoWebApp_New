@@ -17,8 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoImagesAPI", "..\GeoImagesAPI\GeoImagesAPI.csproj", "{D4673B5B-5BAA-4B08-AF57-0AC47A8B7E64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoClinet", "GeoClinet\GeoClinet.csproj", "{BD784E92-DE0D-4FF7-B65E-6255E9DF2F69}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,10 +39,6 @@ Global
 		{D4673B5B-5BAA-4B08-AF57-0AC47A8B7E64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4673B5B-5BAA-4B08-AF57-0AC47A8B7E64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4673B5B-5BAA-4B08-AF57-0AC47A8B7E64}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BD784E92-DE0D-4FF7-B65E-6255E9DF2F69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BD784E92-DE0D-4FF7-B65E-6255E9DF2F69}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BD784E92-DE0D-4FF7-B65E-6255E9DF2F69}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BD784E92-DE0D-4FF7-B65E-6255E9DF2F69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

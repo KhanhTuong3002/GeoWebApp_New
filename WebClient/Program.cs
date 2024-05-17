@@ -1,4 +1,4 @@
-﻿using DataAccess;
+using DataAccess;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
@@ -83,7 +83,6 @@ Console.WriteLine("Sending test email");
 //await RegisterModel.SendEmailAsync("Tuongvkce161108@fpt.edu.vn", "test", "test");
 
 //default admin account
-//đay la commment
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;

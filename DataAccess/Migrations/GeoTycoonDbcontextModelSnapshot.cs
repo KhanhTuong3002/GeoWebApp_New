@@ -575,31 +575,25 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-          Id = "d458b4a6-ccf6-49db-a282-c933c5a189a1",
-
+                            Id = "d458b4a6-ccf6-49db-a282-c933c5a189a1",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-
                             Id = "b8635eae-b1ba-497b-9c09-97a72b0587ac",
-             Name = "Teacher",
+                            Name = "Teacher",
                             NormalizedName = "TEACHER"
                         },
                         new
                         {
-
                             Id = "c8c84e9c-b8e2-4250-85f1-01c60f93d380",
-
                             Name = "Pending",
                             NormalizedName = "PENDING"
                         },
                         new
                         {
-
                             Id = "0c5420d4-d415-4f99-b524-286945a60976",
-
                             Name = "Student",
                             NormalizedName = "STUDENT"
                         });

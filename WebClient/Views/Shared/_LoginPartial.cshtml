@@ -6,6 +6,7 @@
     var currentUser = await UserManager.GetUserAsync(User) as User;
 }
 <ul class="navbar-nav flex justify-between">
+
     @if (SignInManager.IsSignedIn(User))
     {
         <div class="navbar bg-base-200">
